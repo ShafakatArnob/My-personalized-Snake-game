@@ -2,6 +2,7 @@ import turtle as t
 import snake as s
 import food as f
 import scoreboard as sb
+import random
 import time
 
 screen = t.Screen()
@@ -25,7 +26,7 @@ y = 0
 game_is_on = True
 while game_is_on:
     screen.update()                                  # as animation is off, we need to update the movement manually
-    time.sleep(0.09)                                  # slowing down the update of movement
+    time.sleep(0.1)                                  # slowing down the update of movement
     snake.move()
 
     # Detecting the collision with food
@@ -42,7 +43,8 @@ while game_is_on:
         poison.move()
 
         if poison.xcor() > 300:
-            poison.goto(-(poison.xcor()), poison.ycor())
+            random_y = random.randint(-280, 280)
+            poison.goto(-(poison.xcor()), random_y)
 
         # Detecting the collision with poison
         if snake.head.distance(poison) < 15:
